@@ -1,159 +1,140 @@
+# ¿Qué es la nube y qué cambió en AWS?
+**Conceptos base de cloud y la nueva forma de empezar en AWS** | *Camila Inojosa Añez*
 
-# <span style = "color: blue"> QUÉ ES LA NUBE Y QUÉ CAMBIO EN AWS? </span>
-Conceptos base de cloud y la nueva forma de empezar en AWS | Camila Inojosa Anez
+* **Requisitos:** Tener cuenta de AWS
 
-requisitos: tener cuenta de AWS
---
+---
 
-Antes para lanzar un app, se necesitaba comprar servidores, esperar semanas, adivinar la capacidad y mantener todo.
-Entonces esto soluciona la nube, convierte este tema de infrestructura en algo que se puede solucionar en minutos y pagamos solo por lo que usamos.
-# <span style = "color: blue"> 1. Qué es la nube? </span>
-Es una infraestructura bajo demanda, por interne, con pago por uso.
+Antes, para lanzar una app se necesitaba comprar servidores físicos, esperar semanas, adivinar la capacidad y mantener todo. La nube soluciona esto convirtiendo la infraestructura en algo que se despliega en minutos y donde pagamos solo por lo que usamos.
 
-- Definición de aws: entrega bajo demanda de recursos de TI a través de internet con precios de pago por uso.
+## 1. ¿Qué es la nube?
+Es una infraestructura bajo demanda, por internet, con pago por uso.
 
-Nosotros tenemos nuestra aplicacion y via internet (a traves de la consola o un aAPI) accedemos a recursos en AWS. 
-AWS tiene varios servicios como:
-- servicios para computo (como EC2, lambda)
-- servicios para alamacenamiento (como EC3)
-- servicios para Bases de datos (como DynamoDB, RDS)
+* **Definición de AWS:** Entrega bajo demanda de recursos de TI a través de internet con precios de pago por uso.
 
-Entonces los conceptos fundamentalaes para entender que es la nube son 3:
-1. Tu accedes a eso que necesitas _Bajo demanda_ -> pides cuando lo necesitas.
-2. Por internet
-3. Pagas por lo que usas -> puedes pagar y dejar de pagar.
+Nosotros tenemos nuestra aplicación y, vía internet (a través de la consola o una API), accedemos a recursos en AWS, tales como:
+* **Cómputo:** Amazon EC2, AWS Lambda
+* **Almacenamiento:** Amazon S3
+* **Bases de datos:** Amazon DynamoDB, Amazon RDS
 
-La nube es importante para nosotros como desarrolladores por que:
-- Experimentar barato -> podemos implementar poco a poco, prueba error borrar, en la vida real.
-- Escalar sin reescribir -> Sirve en cualquier lugar del mundo, por que se puede escalar sin tener que reescribir el codigo completo.
-- Enfocarte en tu código
+### Los 3 conceptos fundamentales
+1. **Bajo demanda:** Pides los recursos exactamente cuando los necesitas[cite: 13].
+2. **Por internet:** Acceso remoto desde cualquier lugar[cite: 13].
+3. **Pago por uso:** Puedes encender, pagar y apagar/dejar de pagar cuando quieras[cite: 13].
 
-# <span style = "color: blue"> 2 Modelos de servicio. </span>
-Otro punto importante es saber que modelos de servicio existen y que es lo que administras tú vs. lo que no administras tú.
+### ¿Por qué es importante para desarrolladores?
+* **Experimentar barato:** Implementar poco a poco (prueba y error, crear y borrar) en entornos reales[cite: 13].
+* **Escalar sin reescribir:** Crece globalmente sin tener que rehacer todo el código[cite: 13].
+* **Foco en el código:** Menos tiempo administrando fierros y más tiempo desarrollando[cite: 13].
 
-Si nosotros queremos acceder a un servicio hay cosas que nosotros tenemos que administrar o no, dependiendo del modelo de servicio:
+---
 
--  **On-Premises**: Imaginemos que tenemos un datacenter del cúal somos dueños y nos encargamos de absolutamente todo, todo al nivel de datos, redes, almacenamiento...
-- **IaaS** (Infraestructure as a Service): Es la infrestructura es tu servicio, el servicio al cuál tú accedes, accedemso a la infraestructura a travé del proveedor. El proveedor va a manejar, adminsitrar todo lo que tiene que ver con la red, almacenamiento, servidores y virtualización y todo lo que queda depende de ti (datos, aplicación, runtime...) un ejemplo en AWS es EC2 (un IaaS).
-- **PaaS** (Plataform as a Service): La plataforma como un servicio, nosotros solo nos encargamos de manejar los datos y la aplicación y el resto el proveedor.
-- **Serverless**
-- **SaaS** (Software as a Service): Nosotros solo manejamos los datos.
+## 2. Modelos de servicio
+Dependiendo del modelo de servicio al que accedamos, cambian las responsabilidades entre lo que administras tú y lo que administra el proveedor[cite: 13]:
 
-Dependiendo del servicio de AWS al que nosotros accedamos  vamos a tener que configurar distintas cosas. Estos son como los mundos que existen.
+* **On-Premises:** Eres dueño del *data center* físico y te encargas de absolutamente todo (datos, redes, servidores, almacenamiento).
+* **IaaS (*Infrastructure as a Service*):** Accedes a la infraestructura del proveedor. AWS maneja red, almacenamiento, servidores y virtualización; tú manejas el sistema operativo, *runtime*, aplicación y datos (ej. **Amazon EC2**).
+* **PaaS (*Platform as a Service*):** Te encargas solo de la aplicación y los datos; el proveedor gestiona el resto (ej. **AWS Elastic Beanstalk**).
+* **Serverless:** Solo subes tu código que responde a eventos y manejas tus datos, pagando únicamente por cada ejecución (ej. **AWS Lambda + DynamoDB**).
+* **SaaS (*Software as a Service*):** Usas un software ya construido y solo gestionas tus datos (ej. **Gmail, Slack, Notion**).
 
-## <span style = "color: blue"> ¿Qué administras tú y qué administra el proveedor? </span>
+### ¿Qué administras tú y qué administra el proveedor?
 
 | Capa | On-premises<br>Tu data center | IaaS<br>Amazon EC2 | PaaS<br>Elastic Beanstalk | Serverless<br>AWS Lambda | SaaS<br>Gmail, Slack |
-|---|---|---|---|---|---|
-| Datos | Tú | Tú | Tú | Tú | Tú |
-| Aplicación | Tú | Tú | Tú | Tú | Proveedor |
-| Runtime | Tú | Tú | Proveedor | Proveedor | Proveedor |
-| Sistema operativo | Tú | Tú | Proveedor | Proveedor | Proveedor |
-| Virtualización | Tú | Proveedor | Proveedor | Proveedor | Proveedor |
-| Servidores | Tú | Proveedor | Proveedor | Proveedor | Proveedor |
-| Red y almacenamiento | Tú | Proveedor | Proveedor | Proveedor | Proveedor |
-| **Pagas por** | Todo, siempre | Hora de máquina | Plataforma encendida | Cada ejecución | Suscripción |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Datos** | Tú | Tú | Tú | Tú | Tú |
+| **Aplicación** | Tú | Tú | Tú | Tú | Proveedor |
+| **Runtime** | Tú | Tú | Proveedor | Proveedor | Proveedor |
+| **Sistema operativo** | Tú | Tú | Proveedor | Proveedor | Proveedor |
+| **Virtualización** | Tú | Proveedor | Proveedor | Proveedor | Proveedor |
+| **Servidores** | Tú | Proveedor | Proveedor | Proveedor | Proveedor |
+| **Red y almacenamiento** | Tú | Proveedor | Proveedor | Proveedor | Proveedor |
+| **Pagas por** | Todo, siempre | Hora de máquina | Plataforma encendida | Cada ejecución | Suscripción |[cite: 13]
 
-HAY UN SERVICIO PARA CADA MODELO.
-(AWS tiene más de 300 servicios)
+> **Hay un servicio para cada modelo** (AWS tiene más de 300 servicios)[cite: 13]:
+> * **IaaS (`Amazon EC2`):** Cuando necesitas controlar el sistema operativo o instalar software especial[cite: 13].
+> * **PaaS (`AWS Elastic Beanstalk`):** Cuando quieres subir una app web y que AWS maneje servidores y balanceo[cite: 13].
+> * **Serverless (`AWS Lambda + DynamoDB`):** Código basado en eventos pagando solo por ejecución[cite: 13].
+> * **SaaS (`Gmail, Slack, Notion`):** Usar software listo sin construirlo[cite: 13].
 
-Iaas --> Amazon EC2 --> Lo usamos cuando necesitamos controlar el sistema operativo o un software especial.
+---
 
-Paas --> AWS Elastic Beanstalk --> Cuando queemos subir una aplicación web y que AWS se encargue de los servidores y balanceo.
+## 3. Infraestructura global
+¿Cómo funciona AWS físicamente? Se divide en **Regiones**, **Zonas de Disponibilidad (AZ)** y **Edge Locations**.
+* **Región:** Ubicación geográfica donde viven tus recursos y se almacenan tus datos. AWS cuenta con **39 regiones**, cada una compuesta por al menos 3 Zonas de Disponibilidad.
+* **Zona de Disponibilidad (AZ):** Uno o más *data centers* aislados con energía, red y refrigeración independientes, conectados entre sí por redes de baja latencia[cite: 13, 17]. Si una AZ falla, las otras respaldan la operación.
+* **Edge Locations (Puntos de presencia):** Ubicaciones locales (más de 750 en CloudFront) que acercan el contenido al usuario final para lograr menor latencia.
 
-Servless --> AWS Lambda + DinamoDB --> Cuando tenemos un código que responde a eventos, queremos almacenarlos y queremos pagar SOLO POR LA EJECUCIÓN.
+<img src="./region.jpg" alt="Regiones y Zonas de Disponibilidad" width="600">
 
-SaaS --> Gmail, Slack, Notion --> Solo queremos usar un software sin construirlo.
+**Regiones en Latinoamérica:**
+* São Paulo
+* México
+* Chile (nueva, con 3 zonas de disponibilidad)
 
-# <span style = "color: blue"> Infraestructura global. </span>
-Cómo funciona AWS? - regiones, zonas de disponibilida y edge.
+### ¿Cómo elegimos una región?
+1. **Latencia:** Qué tan rápido necesitan responder los datos a tus usuarios.
+2. **Leyes de datos:** Regulaciones locales (ej. datos sensibles que por ley no pueden salir de un país).
+3. **Servicios disponibles:** No todos los servicios nuevos están activos en todas las regiones al mismo tiempo.
+4. **Costos:** Los precios varían según la región.
 
-**Una región** es un aubicación geográfica, en esta ubicación geografica nosotros definimos que servicios vamos a utilizar, donde viven estos recursos y donde se almacenaran los datos.
+---
 
-En AWS existen 39 regiones que estan compuestas por almenos 3 zonas de disponibilidad (AZ = Availability Zone).
+## 4. Modelo de Responsabilidad Compartida
+Define qué protege AWS y qué debes proteger tú:
 
-**Una zona de disponibilidad** es donde encontramos 1 o más data centers.
+* **Seguridad DE la nube (Responsabilidad de AWS):**
+  * Protección física de los *data centers* y el hardware.
+  * Red global, Zonas de Disponibilidad y el software base de los servicios administrados.
 
-Por ejemplo tenemos eta imagen:
+* **Seguridad EN la nube (Tu responsabilidad):**
+  * Todo lo que construyes y configuras en la nube\.
+  * Cifrado en comunicación y transferencia de datos\.
+  * Configuración de red de tus servicios.
+  * **Identidades y permisos (IAM):** Quién accede, descarga o modifica recursos.
+  * Tus datos y tu código.
 
-<img src= "./region.jpg" alt="Regionees" width="600">
+<img src="./servicio.jpg" alt="Comparativa EC2 vs Lambda" width="600">[cite: 13, 18]
 
-Representa a una región (Ohio) con 3 AZ, cada AZ estan conectadas entre si. entonces si una de estas falla tiene el respaldo de las otras dos.
+> **Regla de oro:** Todo lo que tiene que ver con **datos, permisos y código** nunca se delega. Si usas agentes de IA para generar infraestructura, debes supervisarlos:
+> * **Sin revisar:** Pides una app al agente $\rightarrow$ Crea un *bucket* público $\rightarrow$ Datos expuestos y costos inesperados.
+> * **Revisando:** Lees el plan del agente $\rightarrow$ Aplicas límite de gasto y acceso privado $\rightarrow$ Recursos seguros que entiendes.
 
-tambien estan las **Edge Location** que son como puntos de presencia locales que nos permiten tener meor latencia de los datos a los que queremo acceder.
+---
 
-AWS tiene: 
-- 39 regiones
-- 124 Zonas de disponibilidad
-- 750+ puntos de presencia Cloud Front
+## 5. ¿Qué cambió en AWS? (Septiembre 2026)
 
-Al crear nuestra cuenta de aws veremos en que zona de disponibilidad estara esta cuenta, por que dependiendo de esa zona podre acceder a servicios.
+*  **Antes:** Tarjeta de crédito obligatoria, creación automática de un usuario raíz (*root*) difícil de asegurar y miedo constante a recibir facturas sorpresa.
+*  **Ahora:** Registro sin tarjeta para la mayoría de cuentas nuevas usando **Google, GitHub, Apple, Amazon o Email**. Crea un **AWS Builder ID** (sin usuario *root*) y permite también registro por terminal (`aws signup`).
 
-En el caso de latinoamérica tenemos:
-- Sao Paulo
-- Mexico
-- Chile (esta es nueva. hay 3 zonas de disponibilidad)
+<img src="./fin.jpg" alt="Registro sin tarjeta en AWS" width="600">
 
-CÓMO ELIGIMOS UNA REGIÓN?
-Tenemos que preguntarnos
-- Cuánta latencia pueden soportar mis usuarios? -> dependera de cuanta latencia necesitara nuestra aplicación.
-- Leyes de datos del país -> por ejemplo si recolecto datos de las personas de chile, estos datos no pueden salir del país en el que viven.
-- Servicios disponibles en esa región que quiero uilizar.
-- Precios que varian entre región.
+### Créditos y Plan Free (6 meses)
+* Obtienes **USD 100 al registrarte + USD 100 completando actividades** (hasta USD 200 en total) durante **6 meses** o hasta agotar los créditos.
+* Incluye más de 100 servicios sin cobros (EC2, S3, DynamoDB, Lambda, Bedrock).
+* Al terminar los 6 meses, los proyectos se suspenden y AWS guarda tus datos por **90 días** por si decides pasar al plan *Paid*[cite: 16]. *(Tip: agendar un recordatorio a los 5 meses)*.
 
-# <span style = "color: blue"> RESPONSABILIDAD COMPARTIDA. </span>
-Que portege AWS y que proteges tú.
+<img src="./meses.jpg" alt="Créditos y plan Free por 6 meses" width="600">
 
-seguridad EN la nube (lo que tu pones en la nube):
-- Si yo construyo una app en la nube/lo que hago **en** la nube
-- comunicacion y transferencia de los datos (yo me encargo del cifrado) 
-- configuraion de la red (servicio q yo uso)
-- TODO lo que tiene ue ver con identidad y servicios (quien accede, descargar, modificar...)
-- datos que yo almaceno, no en donde están 
+### Límite de gasto (Plan Paid)
+<img src="./limiteGastos.jpg" alt="Límite de gasto mensual" width="600">
 
-Seguridad DE la nube (nube=aws):
-- se encarga de proteger los data centers
-- el hardware que tiene en estos data centers
-- donde estaran las AZ - red
-- Software de servicios que ellos administran
+---
 
-Por ejemplo: tenemos 2 servicios distintos
+## 📝 Tarea para la Clase 2
+* [ ] Terminar el registro de la cuenta de AWS.
+* [ ] Anotar tu **Región** y tu **Account ID**.
+* [ ] Activar la autenticación multifactor (**MFA**).
+* [ ] Revisar las actividades para desbloquear los créditos adicionales.
 
-<img src ="./servicio.jpg" alt="Servicios" width="600">
+<img src="./tarea.jpg" alt="Tarea Clase 2" width="600">
 
-TODO LO QUE TIENE QUE VER CON DATOS, PERMISOS Y CODIGO DEPENDE DE NOSOTROS.
+---
 
-Cuando usamos ia tenemos que supervisar, si se equivoca nosotros somos responsables.
-
-<span style = "color: green"> SIN REVISAR</span>:
-Pides una app al agente -> Crea un bucket público -> Datos expuestos y costos
-
-<span style = "color: red"> REVISANDO</span>:
-Lees el plan del agente -> Limite de gasto y acceso privado -> Recursos que entiendes.
-
-
-# <span style = "color: blue"> QUÉ CAMBIO EN AWS? </span>
-(16 de septiembre 2026)
-
-<span style = "color: red"> Antes: </span>
-- Tarjeta obligatoria
-- Al crear una cuenta nueva tambien se creaba bajo un usuario raiz (root)
-- Miedo a la factura
-
-<span style = "color: green"> Ahora: </span>
-- Login con google o GitHub
-- Tiene creditos y limites de gastos
-
-<img src ="./fin.jpg" alt="cuenta" weight="600">
-<img src ="./meses.jpg" alt="cuenta" weight="600">
-<img src ="./limiteGastos.jpg" alt="cuenta" weight="600">
-<img src ="./tarea.jpg" alt="cuenta" weight="600">
-
-FUENTES OFICIALES PARA PROFUNDIZAR:
-
-- [AWS News Blog: AWS reimagines the getting started experience](https://aws.amazon.com/blogs/aws/aws-reimagines-the-getting-started-experience/)
-- [Get started fast with AWS (créditos, plan gratuito y preguntas frecuentes)](https://aws.amazon.com/start-here/)
-- [Sign up for AWS (new): guía de registro](https://docs.aws.amazon.com/accounts/latest/reference/sign-in-new.html)
-- [Regiones de tus proyectos](https://docs.aws.amazon.com/accounts/latest/reference/project-regions.html)
-- [Crear un límite de gasto](https://docs.aws.amazon.com/accounts/latest/reference/create-spend-limit.html)
-- [Agent Toolkit for AWS: guía de usuario](https://docs.aws.amazon.com/agent-toolkit/latest/userguide/quick-start.html)
+## 🔗 Fuentes oficiales para profundizar
+* [AWS News Blog: AWS reimagines the getting started experience](https://aws.amazon.com/blogs/aws/aws-reimagines-the-getting-started-experience/)
+* [Get started fast with AWS (créditos, plan gratuito y preguntas frecuentes)](https://aws.amazon.com/start-here/)
+* [Sign up for AWS (new): guía de registro](https://docs.aws.amazon.com/accounts/latest/reference/sign-in-new.html)
+* [Regiones de tus proyectos](https://docs.aws.amazon.com/accounts/latest/reference/project-regions.html)
+* [Crear un límite de gasto](https://docs.aws.amazon.com/accounts/latest/reference/create-spend-limit.html)
+* [Agent Toolkit for AWS: guía de usuario](https://docs.aws.amazon.com/agent-toolkit/latest/userguide/quick-start.html)
